@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import TaskViewer from './components/TaskViewer';
-
+import CreateTask from './components/CreateTask';
 
 function App() {
   const [data, setData] = useState([
@@ -54,9 +54,17 @@ function App() {
       dueDate: new Date(2023,1,23)
     }
   ])
+  const addNewTask = (newTask) => {
+    setData(stateVechi => [
+      ...stateVechi,
+      newTask
+    ])
+  }
+
   return (
     <div className="App">
       <TaskViewer data={data}/>
+      <CreateTask addNewTask={addNewTask} />
     </div>
   );
 }
